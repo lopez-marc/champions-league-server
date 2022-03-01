@@ -1,5 +1,5 @@
 const config = {
-  port: process.env.SERVER_PORT,
+  port: process.env.PORT,
   secrets: {
     jwt: process.env.JWT_SECRET,
     jwtExp: process.env.JWT_EXPIRATION
