@@ -5,6 +5,8 @@ import { Fixture } from '../fixture/fixture.model.js'
 import { ApiFixture } from '../apiFixture/apiFixture.model.js'
 import { Standing } from '../standing/standing.model.js'
 import { ApiStanding } from '../apiStanding/apiStanding.model.js'
+import { FinalStage } from '../finalStage/finalStage.model.js'
+import { ApiFinalStage } from '../apiFinalStage/apiFinalStage.model.js'
 
 import config from '../../config/index.js'
 
@@ -161,7 +163,17 @@ export const signInWithGoogle = async (req, res) => {
 
         await Standing.insertMany(userApiStandings)
 
-        console.log(userApiStandings)
+        const apiFinalStage = await ApiFinalStage.find({})
+          .select('-_id')
+          .lean()
+          .exec()
+
+        const userApiFinalStage = apiFinalStage.map(fixture => ({
+          ...fixture,
+          createdBy: user._id
+        }))
+
+        await FinalStage.insertMany(userApiFinalStage)
 
         return res.status(201).send({ message: 'User created' })
       } catch (e) {

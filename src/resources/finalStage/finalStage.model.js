@@ -1,12 +1,11 @@
 import mongoose from 'mongoose'
 
-const apiFixtureSchema = new mongoose.Schema(
+const finalStageSchema = new mongoose.Schema(
   {
     fixtureID: Number,
     date: Date,
     status: String,
     round: String,
-    group: String,
     teams: {
       home: {
         id: Number,
@@ -26,4 +25,4 @@ const apiFixtureSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-export const ApiFixture = mongoose.model('apifixture', apiFixtureSchema)
+export const FinalStage = mongoose.model('finalstage', finalStageSchema)

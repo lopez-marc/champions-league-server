@@ -12,6 +12,9 @@ import apiFixtureRouter from './resources/apiFixture/apiFixture.router.js'
 import standingRouter from './resources/standing/standing.router.js'
 import apiStandingRouter from './resources/apiStanding/apiStanding.router.js'
 
+import finalStageRouter from './resources/finalStage/finalStage.router.js'
+import apiFinalStageRouter from './resources/apiFinalStage/apiFinalStage.router.js'
+
 import { signup, signInWithGoogle } from './resources/user/user.controllers.js'
 import decodeToken from './middleware/decodeToken.js'
 
@@ -32,6 +35,8 @@ app.use('/api-fixture', apiFixtureRouter)
 app.use('/fixture', decodeToken, fixtureRouter)
 app.use('/api-standing', apiStandingRouter)
 app.use('/standing', decodeToken, standingRouter)
+app.use('/api-final-stage', apiFinalStageRouter)
+app.use('/final-stage', decodeToken, finalStageRouter)
 
 export const start = async () => {
   try {
