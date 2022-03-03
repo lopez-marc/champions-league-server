@@ -4,6 +4,8 @@ const finalStageSchema = new mongoose.Schema(
   {
     fixtureID: Number,
     date: Date,
+    day: String,
+    time: String,
     status: String,
     round: String,
     teams: {
